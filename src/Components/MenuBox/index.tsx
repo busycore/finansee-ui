@@ -1,8 +1,11 @@
 import { FormEvent, useCallback, useState } from "react";
+import { useTransactions } from "../../Hooks/transactionsContext";
 import { TransactionTypeToggle } from "../TransactionTypeToggle";
 import { Container, FormBox } from "./styles";
 
 export function MenuBox() {
+  const { searchTransactions } = useTransactions();
+
   const [transactionType, setTransactionType] = useState("Both");
   const [transactionCategory, setTransactionCategory] = useState("Other");
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -17,6 +20,7 @@ export function MenuBox() {
     (evt: FormEvent) => {
       evt.preventDefault();
       console.log({ searchKeyword, transactionType, transactionCategory });
+      searchTransactions(searchKeyword);
     },
     [searchKeyword, transactionCategory, transactionType]
   );

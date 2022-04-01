@@ -24,7 +24,7 @@ type TransactionInput = Omit<Transaction, "id" | "date">;
 interface TransactionsContextData {
   transactions: Transaction[];
   loadTransactions: () => Promise<void>;
-
+  searchTransactions: (keyword: string) => Promise<void>;
   //createTransaction(transaction: TransactionInput): Promise<void>;
 }
 
@@ -43,8 +43,16 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     });
   }, []);
 
+  const searchTransactions = useCallback(async (keyword: string) => {
+    await api.get(`transactions/search?keyword=${keyword}`).then((resp) => {
+      setTransactions(resp.data);
+    });
+  }, []);
+
   return (
-    <TransactionsContext.Provider value={{ transactions, loadTransactions }}>
+    <TransactionsContext.Provider
+      value={{ transactions, loadTransactions, searchTransactions }}
+    >
       {children}
     </TransactionsContext.Provider>
   );
