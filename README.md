@@ -16,7 +16,7 @@ FinanSee API previously running
 ```bash
 .env
 
-API_URL=3005
+REACT_APP_API_URL=3005
 ```
 
 ## 🔨 Installation & Building
@@ -36,15 +36,16 @@ $ yarn start
 
 ## 💡 Features
 
-- [X] MongoDB Connection
-- [X] Get All Transactions
+- [X] API Connection
+- [X] API Context with custom hook
 - [x] Search/Filter Transactions
 - [x] Create Transactions
 - [x] Delete Transactions
+- [ ] Form validation
+- [ ] More Components
 - [ ] Authentication
-- [ ] Interface Refactoring
-- [ ] Logging
-- [ ] Unit Tests
+- [ ] Services refactoring inside the context
+- [ ] Tests
 - [ ] More Refactoring
 
 
