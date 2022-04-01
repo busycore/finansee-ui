@@ -1,7 +1,15 @@
 import { Container } from "./styles";
 import { HiOutlineXCircle } from "react-icons/hi";
+import { api } from "../../Services/api";
+import { useEffect, useState } from "react";
+import { useTransactions } from "../../Hooks/transactionsContext";
 
 export function TransactionsTable() {
+  const { transactions, loadTransactions } = useTransactions();
+  useEffect(() => {
+    loadTransactions();
+  }, [loadTransactions]);
+
   return (
     <Container>
       <table>
@@ -15,39 +23,29 @@ export function TransactionsTable() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Mc Donalds</td>
-            <td>Food</td>
-            <td>$29.90</td>
-            <td>26/12/2002</td>
-            <td>
-              <button className="delete-button">
-                <HiOutlineXCircle size={24} />
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>Mc Donalds</td>
-            <td>Food</td>
-            <td>$29.90</td>
-            <td>26/12/2002</td>
-            <td>
-              <button className="delete-button">
-                <HiOutlineXCircle size={24} />
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>Mc Donalds</td>
-            <td>Food</td>
-            <td>$29.90</td>
-            <td>26/12/2002</td>
-            <td>
-              <button className="delete-button">
-                <HiOutlineXCircle size={24} />
-              </button>
-            </td>
-          </tr>
+          {transactions.map((transaction) => (
+            <tr key={transaction.id}>
+              <td>{transaction.name}</td>
+              <td>{transaction.category}</td>
+              <td
+                className={
+                  transaction.type === "Expense" ? "expense" : "income"
+                }
+              >
+                {transaction.type === "Expense" ? "-" : "+"}
+                {new Intl.NumberFormat("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                }).format(transaction.value)}
+              </td>
+              <td>{transaction.date}</td>
+              <td>
+                <button className="delete-button">
+                  <HiOutlineXCircle size={24} />
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </Container>

@@ -52,5 +52,17 @@ export const Container = styled.div`
       border: 0;
       color: var(--red);
     }
+
+    .expense {
+      color: var(--red);
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .income {
+      text-align: left;
+      font-weight: 600;
+      color: var(--green);
+    }
   }
 `;
