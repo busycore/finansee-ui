@@ -47,8 +47,8 @@ $ yarn start
 - [ ] Services refactoring inside the context
 - [ ] Tests
 - [ ] More Refactoring
-
+- [ ] Make it responsive
 
 ## 📜 Credits
 
-This project uses extensively ReactJS and styled-components alongside a bunch of wonderful another depencies.
+This project uses extensively ReactJS,styled-components and axios alongside a bunch of wonderful another depencies.
