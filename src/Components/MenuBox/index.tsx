@@ -52,7 +52,7 @@ export function MenuBox() {
         >
           <option value="">Any</option>
           <option value="Food">Food</option>
-          <option value="Home">Home</option>
+          <option value="House">House</option>
           <option value="Transport">Transport</option>
           <option value="Salary">Salary</option>
           <option value="Other">Other</option>

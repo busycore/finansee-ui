@@ -1,11 +1,11 @@
 import { Container } from "./styles";
 import { HiOutlineXCircle } from "react-icons/hi";
-import { api } from "../../Services/api";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useTransactions } from "../../Hooks/transactionsContext";
 
 export function TransactionsTable() {
-  const { transactions, loadTransactions } = useTransactions();
+  const { transactions, loadTransactions, deleteTransaction } =
+    useTransactions();
   useEffect(() => {
     loadTransactions();
   }, [loadTransactions]);
@@ -40,7 +40,12 @@ export function TransactionsTable() {
               </td>
               <td>{transaction.date}</td>
               <td>
-                <button className="delete-button">
+                <button
+                  onClick={() => {
+                    deleteTransaction(transaction.id);
+                  }}
+                  className="delete-button"
+                >
                   <HiOutlineXCircle size={24} />
                 </button>
               </td>

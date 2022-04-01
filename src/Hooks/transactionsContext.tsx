@@ -32,7 +32,8 @@ export interface TransactionsContextData {
   transactions: Transaction[];
   loadTransactions: () => Promise<void>;
   searchTransactions: (search: SearchTransactionInput) => Promise<void>;
-  //createTransaction(transaction: TransactionInput): Promise<void>;
+  deleteTransaction: (transactionId: string) => Promise<void>;
+  createTransaction(transaction: TransactionInput): Promise<void>;
 }
 
 export const TransactionsContext = createContext<TransactionsContextData>(
@@ -57,8 +58,8 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
       const searchCategory = search.category
         ? `&category=${search.category}`
         : "";
+
       const searchParams = `transactions/search?${searchKeyword}${searchType}${searchCategory}`;
-      console.log(searchParams);
 
       await api.get(searchParams).then((resp) => {
         setTransactions(resp.data);
@@ -67,9 +68,35 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     []
   );
 
+  const createTransaction = useCallback(
+    async (transaction: TransactionInput) => {
+      await api.post("transactions/", transaction).then((response) => {
+        setTransactions([...transactions, response.data]);
+      });
+    },
+    [transactions]
+  );
+
+  const deleteTransaction = useCallback(
+    async (transactionId: string) => {
+      await api.delete(`transactions/${transactionId}`).then((resp) => {
+        setTransactions([
+          ...transactions.filter((tran) => tran.id !== transactionId),
+        ]);
+      });
+    },
+    [transactions]
+  );
+
   return (
     <TransactionsContext.Provider
-      value={{ transactions, loadTransactions, searchTransactions }}
+      value={{
+        transactions,
+        loadTransactions,
+        searchTransactions,
+        deleteTransaction,
+        createTransaction,
+      }}
     >
       {children}
     </TransactionsContext.Provider>
