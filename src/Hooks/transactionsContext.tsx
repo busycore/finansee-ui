@@ -19,12 +19,19 @@ export interface Transaction {
 interface TransactionsProviderProps {
   children: ReactNode;
 }
+
+export interface SearchTransactionInput {
+  keyword: string;
+  type?: string;
+  category?: string;
+}
+
 type TransactionInput = Omit<Transaction, "id" | "date">;
 
-interface TransactionsContextData {
+export interface TransactionsContextData {
   transactions: Transaction[];
   loadTransactions: () => Promise<void>;
-  searchTransactions: (keyword: string) => Promise<void>;
+  searchTransactions: (search: SearchTransactionInput) => Promise<void>;
   //createTransaction(transaction: TransactionInput): Promise<void>;
 }
 
@@ -43,11 +50,22 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     });
   }, []);
 
-  const searchTransactions = useCallback(async (keyword: string) => {
-    await api.get(`transactions/search?keyword=${keyword}`).then((resp) => {
-      setTransactions(resp.data);
-    });
-  }, []);
+  const searchTransactions = useCallback(
+    async (search: SearchTransactionInput) => {
+      const searchType = search.type ? `&type=${search.type}` : "";
+      const searchKeyword = search.keyword ? `&keyword=${search.keyword}` : "";
+      const searchCategory = search.category
+        ? `&category=${search.category}`
+        : "";
+      const searchParams = `transactions/search?${searchKeyword}${searchType}${searchCategory}`;
+      console.log(searchParams);
+
+      await api.get(searchParams).then((resp) => {
+        setTransactions(resp.data);
+      });
+    },
+    []
+  );
 
   return (
     <TransactionsContext.Provider
