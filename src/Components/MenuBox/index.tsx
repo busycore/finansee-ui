@@ -24,7 +24,7 @@ export function MenuBox() {
       evt.preventDefault();
       const searchObject: SearchTransactionInput = {
         keyword: searchKeyword,
-        type: transactionType,
+        type: transactionType === "Both" ? "" : transactionType,
         category: transactionCategory,
       };
       searchTransactions(searchObject);
@@ -50,6 +50,7 @@ export function MenuBox() {
           value={transactionCategory}
           onChange={(evt) => setTransactionCategory(evt.target.value)}
         >
+          <option value="">Any</option>
           <option value="Food">Food</option>
           <option value="Home">Home</option>
           <option value="Transport">Transport</option>
