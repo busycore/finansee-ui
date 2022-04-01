@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { darken, lighten } from "polished";
+import { lighten } from "polished";
 
 export const Container = styled.div`
   margin: 0 auto;
@@ -27,12 +27,15 @@ export const FormBox = styled.form`
   select {
     padding: 1rem;
     font-size: 1rem;
-    margin-right: 1.5rem;
+    margin-left: 1rem;
+    border-radius: 0.25rem;
+    border: 0;
   }
 
   button.search-button {
     align-self: stretch;
     grid-column: 3;
+    font-weight: 600;
     margin-left: 1rem;
     font-size: 1rem;
     border-radius: 0.25rem;

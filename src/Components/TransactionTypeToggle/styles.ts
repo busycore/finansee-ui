@@ -4,12 +4,15 @@ export interface TransactionTypeToggleProps {
   transactionType: string | "Both" | "Income" | "Expense";
 }
 
-export const Container = styled.button<TransactionTypeToggleProps>`
+export const Container = styled.div<TransactionTypeToggleProps>`
   border: 0;
   min-width: 4rem;
   border-radius: 0.25rem;
   align-self: stretch;
   color: var(--shape);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   margin-right: 1rem;
 
