@@ -21,4 +21,8 @@ export const Container = styled.div<TransactionTypeToggleProps>`
     if (props.transactionType === "Expense") return "#EE2E31";
     if (props.transactionType === "Both") return "#3A6EA5";
   }};
+
+  &:hover {
+    cursor: pointer;
+  }
 `;

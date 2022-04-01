@@ -8,8 +8,8 @@ export const Container = styled.div`
     border-spacing: 0.15rem 0.15rem;
 
     th {
-      background: var(--shape);
-      color: var(--text-title);
+      background: var(--blue-light);
+      color: var(--text-light);
       font-weight: 600;
       font-size: 1.2rem;
       text-align: center;

@@ -3,8 +3,8 @@ import {
   HiSwitchVertical,
   HiOutlineArrowSmUp,
   HiOutlineArrowSmDown,
+  HiOutlineCurrencyDollar,
 } from "react-icons/hi";
-import { useState } from "react";
 
 interface TransactionTypeProps {
   transactionType: string;
@@ -20,9 +20,10 @@ export function TransactionTypeToggle({
       onClick={onTransactionTypeChange}
       transactionType={transactionType}
     >
-      {transactionType === "Both" && <HiSwitchVertical size={32} />}
-      {transactionType === "Expense" && <HiOutlineArrowSmDown size={32} />}
-      {transactionType === "Income" && <HiOutlineArrowSmUp size={32} />}
+      <HiOutlineCurrencyDollar size={24} />
+      {transactionType === "Both" && <HiSwitchVertical size={24} />}
+      {transactionType === "Expense" && <HiOutlineArrowSmDown size={24} />}
+      {transactionType === "Income" && <HiOutlineArrowSmUp size={24} />}
     </Container>
   );
 }

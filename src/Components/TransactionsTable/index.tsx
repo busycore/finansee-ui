@@ -6,9 +6,10 @@ import { useTransactions } from "../../Hooks/transactionsContext";
 export function TransactionsTable() {
   const { transactions, loadTransactions, deleteTransaction } =
     useTransactions();
+
   useEffect(() => {
     loadTransactions();
-  }, [loadTransactions]);
+  }, []);
 
   return (
     <Container>
