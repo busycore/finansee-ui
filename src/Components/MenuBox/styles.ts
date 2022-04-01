@@ -12,16 +12,15 @@ export const Container = styled.div`
 
 export const FormBox = styled.form`
   margin-top: 1rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
+  display: flex;
+
+  align-items: center;
 
   input {
     border-radius: 0.25rem;
     width: 100%;
     padding: 1rem;
     font-size: 1rem;
-    grid-column: 1/3;
     border: 1 solid var(--text-body);
   }
 
@@ -31,7 +30,8 @@ export const FormBox = styled.form`
     margin-right: 1.5rem;
   }
 
-  button {
+  button.search-button {
+    align-self: stretch;
     grid-column: 3;
     margin-left: 1rem;
     font-size: 1rem;
