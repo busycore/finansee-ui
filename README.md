@@ -1,5 +1,5 @@
 
-# FinanSee UI (ReactJS)
+# FinanSee UI
 
 FinanSee UI just a simple ReactJS Application handcrafted to help people finances' management.
 ## 📄 Requirements
@@ -25,3 +25,7 @@ $ npm install
 # development
 $ npm run start
 ```
+
+## ☁️ Access the app
+
+You can access the app at `http://localhost:3000/`
