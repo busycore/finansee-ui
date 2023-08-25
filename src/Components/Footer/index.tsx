@@ -4,8 +4,7 @@ export function Footer() {
   return (
     <Container>
       <h3>
-        Made with ❤️ by{" "}
-        <a href="http://www.github.com/busycore">Matheus Vargem</a>
+        Made with ❤️
       </h3>
     </Container>
   );

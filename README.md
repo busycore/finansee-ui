@@ -6,49 +6,22 @@ FinanSee UI just a simple ReactJS Application handcrafted to help people finance
 
 ```bash
 NodeJS >= 14
-yarn(recommended) 
 FinanSee API previously running
 ```
-
 
 ## ⚙️ Configuration
 
 ```bash
 .env
 
-REACT_APP_API_URL=3005
+REACT_APP_API_URL=3005 # Backend API port 
 ```
-
-## 🔨 Installation & Building
-
-```bash
-$ yarn install
-$ yarn build
-```
-
 
 ## 🟢 Running the app
 
 ```bash
+#install dependencies
+$ npm install
 # development
-$ yarn start
+$ npm run start
 ```
-
-## 💡 Features
-
-- [X] API Connection
-- [X] API Context with custom hook
-- [x] Search/Filter Transactions
-- [x] Create Transactions
-- [x] Delete Transactions
-- [ ] Form validation
-- [ ] More Components
-- [ ] Authentication
-- [ ] Services refactoring inside the context
-- [ ] Tests
-- [ ] More Refactoring
-- [ ] Make it responsive
-
-## 📜 Credits
-
-This project uses extensively ReactJS,styled-components and axios alongside a bunch of wonderful another depencies.
